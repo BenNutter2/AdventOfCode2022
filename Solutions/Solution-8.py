@@ -169,7 +169,7 @@ def day8_part2():
 
     input = [[*tree.strip()] for tree in input]
     
-    input = [[int(tree) for tree in row] for row in input]
+    input = [[int(tree) for tree in row] for row in input] #type: ignore
 
     scenic_scores = []
     for row in range(len(input)):
