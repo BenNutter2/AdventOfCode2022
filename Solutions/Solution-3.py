@@ -15,32 +15,33 @@ def common_member3(a, b, c):
 
 def day3_part1():
     
-    file = open("C:/Users/19870/OneDrive/Documents/AoC/Day3/Input-3.txt", "r")
+    file = open("Inputs/Input-3.txt", "r")
     input = file.readlines()
 
-    pritorities  = []
+    priorities  = []
    
     for rucksack in input:
         compartment1 = rucksack[len(rucksack)//2:]
         compartment2 = rucksack[:len(rucksack)//2]
         
         common_element = common_member2(compartment1, compartment2)
-        pritorities.append(common_element)
+        priorities.append(common_element)
     
-    pritorities_total = 0
+    priorities_total = 0
     
-    for letter in pritorities:
+    for letter in priorities:
         if (letter.isupper()):
-            pritorities_total += ord(letter) - 38
+            priorities_total += ord(letter) - 38
         else:
-            pritorities_total += ord(letter) - 96
+            priorities_total += ord(letter) - 96
             
     file.close()
     
-    return pritorities_total
+    return priorities_total
     
 def day3_part2():
-    file = open("C:/Users/19870/OneDrive/Documents/AoC/Day3/Input-3.txt", "r")
+    
+    file = open("Inputs/Input-3.txt", "r")
     input = file.readlines()
     
     pritorities  = []
@@ -61,6 +62,15 @@ def day3_part2():
     return pritorities_total
 
 def day3():
+    import time, tracemalloc
+    
+    tracemalloc.start()     # Start memory allocation trace
+    start = time.time()
+    
     print(day3_part1(), day3_part2())
+    
+    print("\t\tTotal elapsed time:", time.time()-start)
+    print("Memory Usage\tCurrent:",tracemalloc.get_traced_memory()[0],"\tPeak:",tracemalloc.get_traced_memory()[1])
+    tracemalloc.stop()
 day3()
 

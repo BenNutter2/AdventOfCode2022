@@ -1,6 +1,6 @@
 def day2_part1():
     
-    file = open("C:/Users/19870/OneDrive/Documents/AoC/Input-2.txt", "r")
+    file = open("Inputs/Input-2.txt", "r")
     input = file.readlines()
     strategy_total = 0 
     round_score = 0

@@ -30,7 +30,7 @@ def doesOverlap(string1, string2):
 
 def day4_part1():
     
-    with open("C:/Users/19870/OneDrive/Documents/AoC/Day4/Input-4.txt", "r") as f:
+    with open("Inputs/Input-4.txt", "r") as f:
         input=[]
         for line in f:
             strip_lines=line.strip()
@@ -47,7 +47,7 @@ def day4_part1():
     
 def day4_part2():
     
-    with open("C:/Users/19870/OneDrive/Documents/AoC/Day4/Input-4.txt", "r") as f:
+    with open("Inputs/Input-4.txt", "r") as f:
         input=[]
         for line in f:
             strip_lines=line.strip()
@@ -62,4 +62,15 @@ def day4_part2():
             encompass_total += 1  
     return encompass_total
 
-print(day4_part2())
+def day4():
+    import time, tracemalloc
+    
+    tracemalloc.start()     # Start memory allocation trace
+    start = time.time()
+    
+    print("Answer 1: ", day4_part1(), "\nAnswer 2: ", day4_part2(), "\n")  # type: ignore
+    
+    print("\t\tTotal elapsed time:", time.time()-start)
+    print("Memory Usage\tCurrent:",tracemalloc.get_traced_memory()[0],"\tPeak:",tracemalloc.get_traced_memory()[1])
+    tracemalloc.stop()
+day4()

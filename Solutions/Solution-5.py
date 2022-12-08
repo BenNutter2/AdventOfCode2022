@@ -2,30 +2,26 @@
 
 def day5_part1():
     
-    with open("C:/Users/19870/OneDrive/Documents/AoC/Day5/Input-5.txt") as f:
+    with open("Inputs/Input-5.txt") as f:
         
         stacks = [[], [], [], [], [], [], [], [], []]
         
-        # stack_label = ""
         
-        # for line in f.readlines(): #Finds the labels
-        #     if line[0] != "[":
-        #         stack_label = line.strip()
-        #         break
-        #     pass
+        #----------------------failed attempt at solving problem generally for any input---------------------- 
+        stacks = []
         
-        # stack_label = stack_label.replace(" ", "")
+        max_pile_height = 0
         
-        # for label in stack_label: # Creates stacks
-        #     stacks["stack" + label] = []
-        # print(stacks)
+        for line in f.readlines(): #Finds the height of the highest crate
+            if line[0] == "[":
+                max_pile_height += 1
+            else:
+                break
         
-        # for line in f.readlines(): #Builds the stacks
-        #     if line[0] == "[":
-        #         next_stack = line.strip()
-        #         for i in range(1, len(line), 4):
-        #             if next_stack[i] != 0:
-        #                 stack_number = 
+        for line in f.readlines():
+            
+            for char in range(1, len(line), 4):
+                print(char)
                         
         stacks[0] = ['T', 'R', 'D', 'H', 'Q', 'N', 'P', 'B']
         stacks[1] = ['V', 'T', 'J', 'B', 'G', 'W']
@@ -52,13 +48,15 @@ def day5_part1():
                 instruction = instruction.split(" ")
                 
                 instruction = [int(num) for num in instruction]
-                
+
                 instructions.append(instruction)
         
         for command in instructions:
-            for i in range(command[0]):
-                popped_off = stacks[command[1]-1].pop()
-                stacks[command[2]-1].append(popped_off)
+            
+            for i in range(command[0]): #repeats for number of crates specified
+                
+                popped_off = stacks[command[1]-1].pop() #takes the top crate off the stack
+                stacks[command[2]-1].append(popped_off) #places the selected crate on the selected stack
         
         message1 = ""
         for element in stacks:
@@ -99,13 +97,14 @@ def day5_part2():
                 
                 instructions.append(instruction)
                 
-        for command in instructions:
+        for command in instructions: 
             
-            popped_off = stacks[command[1]-1][-command[0]:]
-            stacks[command[1]-1] = stacks[command[1]-1][:-command[0]]
-            stacks[command[2]-1] += (popped_off)
+            popped_off = stacks[command[1]-1][-command[0]:] #copies top crates off the specified stack
+            stacks[command[1]-1] = stacks[command[1]-1][:-command[0]] #deletes the crates from the top of the pile
+            stacks[command[2]-1] += (popped_off) #places the crates on the new stack
         
         message2 = ""
+        
         for element in stacks:
             message2 += element[-1]
         return message2

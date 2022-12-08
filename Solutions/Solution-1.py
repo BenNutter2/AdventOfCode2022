@@ -1,7 +1,7 @@
 
 def day1():
     
-    file = open("C:/Users/19870/OneDrive/Documents/AoC/Day1/Input-1.txt", "r")
+    file = open("Inputs/Input-1.txt", "r")
     calories = []
     total = 0
 
